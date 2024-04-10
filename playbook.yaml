@@ -1,6 +1,6 @@
 ---
 - name: Install Docker and Run Docker Image
-  hosts: your_target_hosts
+  hosts: all
   become: yes
   tasks:
     - name: Update apt cache (for Ubuntu)
