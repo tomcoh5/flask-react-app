@@ -47,6 +47,14 @@
       tags:
         - docker
 
+    - name: Remove existing container (if any)
+      docker_container:
+        name: my_container
+        state: absent
+      ignore_errors: yes
+      tags:
+        - docker
+
     - name: Pull Docker image
       docker_image:
         name: "{{ docker_image }}"
