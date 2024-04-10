@@ -1,6 +1,6 @@
 ---
 - name: Install Docker and Run Docker Image
-  hosts: all
+  hosts: your_target_hosts
   become: yes
   tasks:
     - name: Update apt cache (for Ubuntu)
@@ -16,7 +16,7 @@
           - curl
           - gnupg
           - lsb-release
-          - python3-pip
+          - python3-pip  # Install pip
       when: ansible_os_family == "Debian"
 
     - name: Add Docker's official GPG key
@@ -39,6 +39,13 @@
         name: docker-ce
         state: present
       when: ansible_os_family == "Debian"
+
+    - name: Install Docker python module for Python 3
+      pip:
+        name: docker
+        executable: pip3
+      tags:
+        - docker
 
     - name: Pull Docker image
       docker_image:
