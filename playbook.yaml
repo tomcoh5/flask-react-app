@@ -39,10 +39,6 @@
         state: present
       when: ansible_os_family == "Debian"
 
-    - name: Install Docker python module
-      pip:
-        name: docker
-
     - name: Pull Docker image
       docker_image:
         name: "{{ docker_image }}"
