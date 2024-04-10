@@ -16,6 +16,7 @@
           - curl
           - gnupg
           - lsb-release
+          - python3-pip
       when: ansible_os_family == "Debian"
 
     - name: Add Docker's official GPG key
